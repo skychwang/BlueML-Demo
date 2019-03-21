@@ -1,0 +1,333 @@
+doctype html(lang='en', ng-app='BlueML')
+head
+    meta(http-equiv='content-type', content='text/html; charset=UTF-8')
+    |   
+    meta(charset='utf-8')
+    |   
+    title BlueML
+    |   
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |   
+    meta(name='description', content='Statistics Online Computational Resource')
+    |   
+    meta(name='author', content='Ivo Dinov - http://www.socr.umich.edu')
+    |   
+    meta(name='keywords', content='Statistics Online Computational Resources')
+    |   
+    meta(name='google-translate-customization', content='234bd10e86451464-6ab57950282faa06-ga85495cbe56600a4-e')
+    |   
+    link(rel='icon', type='image/png', href='./static/images/favicon.png')
+    |   
+    link(href='https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css', rel='stylesheet')
+    |   
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.css', rel='stylesheet')
+    // Import Statements for CSS files
+    link(href='./css/bootstrap.css', rel='stylesheet')
+    |   
+    link(rel='stylesheet', type='text/css', href='./css/stylesheet.css', media='screen')
+    |   
+    style(type='text/css').
+      body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+      }
+    |   
+    style(type='text/css').
+      iframe.goog-te-banner-frame {
+      display: none !important;
+      }
+    |   
+    style(type='text/css').
+      body {
+      position: static !important;
+      top: 0px !important;
+      }
+    |   
+    link(href='./css/bootstrap-responsive.css', rel='stylesheet')
+    |   
+    link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+    |   
+    link(href='css/bootstrap-slider.css', rel='stylesheet', media='screen')
+    |   
+    link(href='css/layout.css', rel='stylesheet', media='screen')
+    |   
+    link(href='css/Load_Data_Page.css', rel='stylesheet', media='screen')
+    |   
+    link(rel='shortcut icon', href='../img/SOCR_Web_Icon.ico')
+    |   
+    link(rel='alternate', type='application/rss+xml', title='SOCR News', href='feed.rss')
+  body
+    #welcome.container
+      .col-md-8
+        br
+        br
+        |       
+        h1
+          b BlueML
+        p
+          | v1.2
+          br
+        h2
+          | a web-based, open source, machine learning application designed for wavelet-based analysis of EKG and EEG waveform data, intended to diagnose cardiac and neurological disorders.
+        |       
+        br
+        |       
+        button.btn.btn-dark(type='button', onclick='step1()') Enter
+    |   
+    #main.container
+      .col-md-8(class='id=')
+        .progress
+          #prog.progress-bar.progress-bar-striped(style='width:40%')
+      |     
+      br
+      |     
+      #step1.col-md-8
+        h1
+          b Select Training Data
+        br
+        |         
+        h2 choose the baseline dataset you wish to classify your dataset against.
+        br
+        |         
+        p ECG Datasets
+        |         
+        .btn-group.btn-group-toggle(data-toggle='buttons')
+          label.btn.btn-secondary.active
+            input#option1(type='radio', name='options', autocomplete='off', checked='')
+            | UCI Arrhythmia
+            sup [1]
+          |           
+          label.btn.btn-secondary
+            input#option2(type='radio', name='options', autocomplete='off')
+            | MIT-BIH Arrhythmia
+            sup [2] [3]
+          |           
+          label.btn.btn-secondary
+            input#option3(type='radio', name='options', autocomplete='off')
+            | Long-Term ST
+            sup [2] [4]
+        |         
+        p EEG Datasets
+        |         
+        .btn-group.btn-group-toggle(data-toggle='buttons')
+          label.btn.btn-secondary
+            input#option1(type='radio', name='options', autocomplete='off')
+            | TUH
+            sup [5]
+          |           
+          label.btn.btn-secondary
+            input#option2(type='radio', name='options', autocomplete='off')
+            | CBH-MIT Scalp
+            sup [6]
+          |           
+          label.btn.btn-secondary
+            input#option2(type='radio', name='options', autocomplete='off')
+            | Epileptic Seizure Recognition
+            sup [7]
+        |         
+        br
+        br
+        |         
+        button.btn.btn-dark(type='button', onclick='showWelcome()') Previous
+        |         
+        button.btn.btn-primary(type='button', onclick='step2()') Next
+        |         
+        br
+        br
+        |         
+        hr
+        |         
+        p
+          | [1] Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+        |         
+        p
+          | [2] Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG, Mietus JE, Moody GB, Peng C-K, Stanley HE. PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals. Circulation 101(23):e215-e220 [Circulation Electronic Pages; http://circ.ahajournals.org/content/101/23/e215.full]; 2000 (June 13).
+        |         
+        p
+          | [3] Moody GB, Mark RG. The impact of the MIT-BIH Arrhythmia Database. IEEE Eng in Med and Biol 20(3):45-50 (May-June 2001). (PMID: 11446209)
+        |         
+        p
+          | [4] Franc Jager, Alessandro Taddei, George B. Moody, Michele Emdin, Gorazd Antolic, Roman Dorn, Ales Smrdel, Carlo Marchesi, and Roger G. Mark. Long-term ST database: a reference for the development and evaluation of automated ischaemia detectors and for the study of the dynamics of myocardial ischaemia. Medical &amp; Biological Engineering &amp; Computing 41(2):172-183 (2003).
+        |         
+        p [5] https://www.isip.piconepress.com/projects/tuh_eeg/
+        |         
+        p
+          | [6] Ali Shoeb. Application of Machine Learning to Epileptic Seizure Onset Detection and Treatment. PhD Thesis, Massachusetts Institute of Technology, September 2009.
+        |         
+        p
+          | [7] Andrzejak RG, Lehnertz K, Rieke C, Mormann F, David P, Elger CE (2001) Indications of nonlinear deterministic and finite dimensional structures in time series of brain electrical activity: Dependence on recording region and brain state, Phys. Rev. E, 64, 061907
+      |     
+      #step2.col-md-8
+        h1
+          b Upload Test Data
+        br
+        |       
+        h2 upload your testing data for classification and further analysis.
+        br
+        |       
+        form(method='POST', action='#', enctype='multipart/form-data')
+          // COMPONENT START
+          .form-group
+            .input-group.input-file(name='Fichier1')
+              span.input-group-btn
+                button.btn.btn-default.btn-choose(type='button') Choose
+              |               
+              input.form-control(type='text', placeholder='Choose a file...')
+              |               
+              span.input-group-btn
+                button.btn.btn-warning.btn-reset(type='button') Reset
+            |           
+            br
+            |           
+            button.btn.btn-success(type='submit', disabled='') Submit
+        |       
+        br
+        br
+        br
+        br
+        |       
+        button.btn.btn-dark(type='button', onclick='step1()') Previous
+        |       
+        button.btn.btn-primary(type='button', onclick='step3()') Next
+        |       
+        br
+        br
+        |       
+        hr
+        |       
+        p *Multiple file upload functionality coming in the near future.
+      |     
+      #step3.col-md-8
+        h1
+          b Analysis
+        br
+        |       
+        h2 input analysis hyperparameters below.
+        br
+        |       
+        div(style='background-color:#ededed;border-radius:25px;padding:20px;')
+          p Algorithm Complexity: 
+          |         
+          input#ex8(data-slider-id='ex1Slider', type='text', data-slider-min='0', data-slider-max='20', data-slider-step='1', data-slider-value='14')
+          br
+          br
+          |         
+          input(type='checkbox', checked='', data-toggle='toggle', data-width='100', data-offstyle='warning')
+        |       
+        br
+        br
+        br
+        br
+        |       
+        button.btn.btn-dark(type='button', onclick='step2()') Previous
+        |       
+        button.btn.btn-primary(type='button', onclick='step4()') Next
+        |       
+        br
+        br
+        |       
+        hr
+        |       
+        p *More features coming soon.
+      |     
+      #step4.col-md-8
+        h1
+          b Results
+        br
+        |       
+        img(src='http://ruishu.io/images/smileyball_neural_net.png', style='height: 400px;')
+        |       
+        br
+        br
+        br
+        br
+        |       
+        button.btn.btn-dark(type='button', onclick='step3()') Previous
+        |       
+        br
+        br
+        |       
+        hr
+        |       
+        p *Results and visualization integration coming soon.
+    |   
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+    |   
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
+    |   
+    script(src='https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js')
+    |   
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js')
+    |   
+    script.
+      window.onload = document.getElementById("main").style.display = "none";
+      function showWelcome() {
+      document.getElementById("welcome").style.display = "block";
+      document.getElementById("main").style.display = "none";
+      }
+      function step1() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("main").style.display = "block";
+      document.getElementById("step1").style.display = "block";
+      document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "none";
+      document.getElementById("step4").style.display = "none";
+      document.getElementById("prog").style.width = "25%"
+      }
+      function step2() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "block";
+      document.getElementById("step3").style.display = "none";
+      document.getElementById("step4").style.display = "none";
+      document.getElementById("prog").style.width = "50%"
+      }
+      function step3() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "block";
+      document.getElementById("step4").style.display = "none";
+      document.getElementById("prog").style.width = "75%"
+      }
+      function step4() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "none";
+      document.getElementById("step4").style.display = "block";
+      document.getElementById("prog").style.width = "100%"
+      }
+    script.
+      function bs_input_file() {
+      $(".input-file").before(
+      function() {
+      if ( ! $(this).prev().hasClass('input-ghost') ) {
+      var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+      element.attr("name",$(this).attr("name"));
+      element.change(function(){
+      element.next(element).find('input').val((element.val()).split('\\').pop());
+      });
+      $(this).find("button.btn-choose").click(function(){
+      element.click();
+      });
+      $(this).find("button.btn-reset").click(function(){
+      element.val(null);
+      $(this).parents(".input-file").find('input').val('');
+      });
+      $(this).find('input').css("cursor","pointer");
+      $(this).find('input').mousedown(function() {
+      $(this).parents('.input-file').prev().click();
+      return false;
+      });
+      return element;
+      }
+      }
+      );
+      }
+      $(function() {
+      bs_input_file();
+      });
+      $("#ex8").slider({
+      tooltip: 'always'
+      });
